@@ -5,7 +5,12 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    /* Custom imports */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    }
   },
   "include": [
     "**/*.ts",
