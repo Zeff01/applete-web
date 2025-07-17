@@ -45,14 +45,14 @@ const Landing = () => {
 
 const Hero = () => {
   return (
-    <section className="h-dvh max-h-[75rem] w-full bg-transparent relative">
+    <section className="flex flex-col gap-y-4 sm:block sm:h-dvh sm:max-h-[75rem] w-full bg-transparent relative">
       <NavbarLanding />
       <img
         src="landing/figure1.webp"
-        className="absolute object-cover translate-x-[100px] translate-y-[20px] aspect-[1.585] w-[50vw] max-w-[824px]"
+        className="sm:absolute object-cover sm:translate-x-[100px] sm:translate-y-[20px] sm:aspect-[1.585] sm:w-[50vw] sm:max-w-[824px] w-full"
         alt="figure1"
       />
-      <div className="absolute right-0 bottom-0 translate-y-[-490px] ">
+      <div className="sm:absolute right-0 bottom-0 sm:translate-y-[-490px] ">
         <p className="relative">
           <span className="flex font-medium text-3xl ">
             <FaQuoteLeft className="size-4 mr-2" />
@@ -65,10 +65,10 @@ const Hero = () => {
       </div>
       <img
         src="landing/figure2.webp"
-        className="absolute object-cover bottom-0 translate-y-[-61px] right-0 w-[50vw] max-w-[792px]"
+        className="sm:absolute object-cover bottom-0 sm:translate-y-[-61px] right-0 sm:w-[50vw] sm:max-w-[792px] w-full"
         alt="figure2"
       />
-      <div className="absolute bottom-[94px] left-0">
+      <div className="sm:absolute bottom-[94px] left-0">
         <p className="text-3xl">
           Join exciting events and{" "}
           <span className="text-green-600">
@@ -76,13 +76,13 @@ const Hero = () => {
           </span>{" "}
           today!
         </p>
-        <div className="flex mt-4 items-center">
+        <div className="flex mt-4 justify-center sm:justify-start items-center">
           <DownloadAppButton className="rounded-full text-base p-4">
             Start Your Adventure
           </DownloadAppButton>
-          <FiChevronsUp className="ml-2 size-8" />
+          <FiChevronsUp className="hidden sm:block ml-2 size-8" />
         </div>
-        <div className="flex mt-4">
+        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-y-4 mt-4">
           <Link href={ANDROID_LINK}>
             <img src="landing/playstore.png" alt="playstore-download" />
           </Link>
@@ -91,7 +91,7 @@ const Hero = () => {
           </Link>
         </div>
       </div>
-      <p className="absolute bottom-[57px] left-1/2 -translate-x-1/2">
+      <p className="hidden sm:block sm:absolute bottom-[57px] left-1/2 sm:-translate-x-1/2">
         Unlock Your Fun
       </p>
     </section>
@@ -123,11 +123,11 @@ const WhyApplete = () => {
   ];
   return (
     <section className="py-16">
-      <article className="flex justify-between">
-        <h1 className="uppercase text-6xl ">
+      <article className="flex flex-col md:flex-row justify-between">
+        <h1 className="uppercase text-4xl sm:text-5xl md:text-6xl ">
           Why applete stands out <br /> from the rest
         </h1>
-        <p className="w-[558px] text-2xl">
+        <p className="w-full max-w-[558px] text-xl sm:text-2xl">
           A Movement where convenience meets community, and where athletes,
           teams, and courts come together to make every match count.
         </p>
@@ -151,16 +151,16 @@ const WhyApplete = () => {
 
 const MoreThanJustAnApp = () => {
   return (
-    <section className="bg-custom-primary p-10 rounded-3xl">
+    <section className="bg-custom-primary p-4 md:p-8 lg:p-10 rounded-3xl">
       <figure className="flex relative gap-14 flex-col lg:flex-row">
         <img src="landing/figure4.webp" alt="figure4" />
-        <h1 className="font-bold text-[80px] leading-none self-end mb-8 ">
+        <h1 className="font-bold text-4xl sm:text-5xl md:text-6xl lg:text-[80px] leading-none self-end mb-8 ">
           <span className="text-neutral-800">More Than Just an App,</span>{" "}
           <br />
           It{"'"}s Your Sports Lifestyle
         </h1>
       </figure>
-      <figure className="flex flex-col 2xl:flex-row text-right text-3xl gap-10">
+      <figure className="flex flex-col 2xl:flex-row text-right  text-base sm:text-xl md:text-2xl lg:text-3xl gap-10">
         <article className="self-end mt-4 2xl:mt-0">
           <p>
             Applete is here to enhance your sports experience, whether you
@@ -173,7 +173,7 @@ const MoreThanJustAnApp = () => {
               alt="agreement"
               className="bg-white p-2 rounded-full"
             />
-            <Button className="bg-neutral-800 p-4 px-8 rounded-full">
+            <Button className="bg-neutral-800 p-2 sm:p-4 px-4 sm:px-8 rounded-full">
               Sports Community That Grows <br />
               With You
             </Button>
@@ -195,7 +195,7 @@ const InfiniteScrollText = () => {
             {index > 0 && (
               <p className="text-custom-primary font-extrabold text-4xl">/</p>
             )}
-            <h1 className="text-[128px] font-bold">{text}</h1>
+            <h1 className="text-[72px] sm:text-[100px] md:text-[128px] font-bold">{text}</h1>
           </div>
         );
       })}
@@ -237,10 +237,10 @@ const Discorver = () => {
   ];
   return (
     <section>
-      <h1 className="text-4xl font-light">
+      <h1 className="text-3xl sm:text-4xl font-light">
         Discover the <span className="text-custom-primary">Key Features</span>{" "}
         Designed to <br />
-        <span className="text-custom-green font-medium text-5xl">
+        <span className="text-custom-green font-medium text-4xl sm:text-5xl">
           Enhance Your Experience!
         </span>
       </h1>
@@ -258,16 +258,16 @@ const Discorver = () => {
                 key={item.name}
                 className="border-b border-t  border-custom-backdrop/60"
               >
-                <AccordionTrigger className="text-4xl px-6 hover:no-underline">
+                <AccordionTrigger className="text-2xl sm:text-4xl sm:px-6 hover:no-underline">
                   {item.name}
                 </AccordionTrigger>
                 {item.description.map((desc) => (
                   <AccordionContent
                     key={desc.name}
-                    className="py-8 bg-custom-backdrop/10"
+                    className="py-4 sm:py-8 bg-custom-backdrop/10"
                   >
-                    <article className="flex flex-col w-full max-w-[694px] px-6">
-                      <h1 className="text-4xl">{desc.name}</h1>
+                    <article className="flex flex-col w-full max-w-[694px] sm:px-6">
+                      <h1 className="text-2xl sm:text-4xl">{desc.name}</h1>
                       <p className="text-white/50 mt-2 text-2xl">{desc.sub}</p>
                     </article>
                   </AccordionContent>
@@ -323,11 +323,11 @@ const Testimonials = () => {
 
   return (
     <section className="py-32">
-      <h1 className="text-6xl font-normal capitalize">
+      <h1 className="text-4xl sm:text-5xl md:text-6xl font-normal capitalize">
         See What Our <br />
         Happy Users are saying about us!
       </h1>
-      <article className="grid grid-cols-3 gap-3 mt-12">
+      <article className="grid sm:grid-cols-2 md:grid-cols-3 gap-3 mt-12">
         {testimonials.map((item, i) => (
           <div
             className="rounded-xl bg-custom-backdrop py-6 px-8 flex flex-col h-[381px]"
@@ -367,7 +367,7 @@ const Testimonials = () => {
 const AppPreview = () => {
   return (
     <section className="py-16 ">
-      <div className="flex items-center w-full max-w-7xl mx-auto ">
+      <div className="flex flex-col md:flex-row items-center w-full max-w-7xl mx-auto ">
         <figure className="relative">
           <img
             src="landing/app-preview.png"
@@ -378,8 +378,8 @@ const AppPreview = () => {
             <PlayIcon />
           </span>
         </figure>
-        <div className="flex-1 px-12">
-          <h1 className="[text-wrap:balance] text-6xl leading-snug">
+        <div className="flex-1 md:px-12">
+          <h1 className="[text-wrap:balance]  text-4xl sm:text-5xl md:text-6xl leading-snug">
             Your all-in-one platform for connecting, creating, and managing
             events
           </h1>
@@ -403,7 +403,7 @@ const Effortless = () => {
   return (
     <section className="pt-32 pb-44 bg-texture">
       <div className="w-full max-w-4xl mx-auto flex flex-col items-center">
-        <h1 className="text-7xl font-bold tracking-tight text-center">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight text-center">
           Effortless.
         </h1>
         <p className="text-center text-lg font-light mt-8">
@@ -438,11 +438,11 @@ const Effortless = () => {
 
 const Footer = () => {
   return (
-    <footer className="py-28 bg-custom-backdrop/20 rounded-t-3xl border border-custom-backdrop relative overflow-hidden isolate antialiased">
+    <footer className="px-4 py-28 bg-custom-backdrop/20 rounded-t-3xl border border-custom-backdrop relative overflow-hidden isolate antialiased">
       <h1 className="uppercase text-[15rem] stroked-text font-bold  absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-[1]">
         APPLETE
       </h1>
-      <div className="flex  w-full max-w-7xl mx-auto justify-between gap-16">
+      <div className="flex flex-col md:flex-row  w-full max-w-7xl mx-auto justify-between gap-16">
         <img src="applete-logo-row.png" alt="applete-logo-row" className="self-center" />
         <div className="flex gap-24">
           <ul className="flex flex-col gap-2 text-xl">
@@ -513,7 +513,7 @@ const Footer = () => {
               Find Out More
             </p>
           </div> */}
-          <p className="mt-2">
+          <p className="mt-2 self-center sm:self-auto">
             © 2025 Applete. All rights reserved.
           </p>
         </div>
