@@ -1,6 +1,6 @@
 import NavbarLanding from "@/components/NavbarLanding";
 import { Button } from "@/components/ui/button";
-import { FaQuoteLeft } from "react-icons/fa";
+import { FaFacebook, FaGlobe, FaQuoteLeft } from "react-icons/fa";
 import { FiChevronsUp } from "react-icons/fi";
 import {
   Accordion,
@@ -11,6 +11,12 @@ import {
 import { ArrowLeft, ArrowRight, PlayIcon } from "lucide-react";
 import { BsGooglePlay } from "react-icons/bs";
 import { PiAppleLogoFill } from "react-icons/pi";
+import { IoMdMail } from "react-icons/io";
+import Link from "next/link";
+import DownloadAppButton from "@/components/DownloadAppButton";
+
+const IOS_LINK = "https://apps.apple.com/ph/app/appleteapp/id6648766155";
+const ANDROID_LINK = "https://play.google.com/store/apps/details?id=com.applete.app"
 
 const Landing = () => {
   return (
@@ -71,14 +77,18 @@ const Hero = () => {
           today!
         </p>
         <div className="flex mt-4 items-center">
-          <Button className="rounded-full text-base p-4">
+          <DownloadAppButton className="rounded-full text-base p-4">
             Start Your Adventure
-          </Button>
+          </DownloadAppButton>
           <FiChevronsUp className="ml-2 size-8" />
         </div>
         <div className="flex mt-4">
-          <img src="landing/playstore.png" alt="playstore-download" />
-          <img src="landing/appstore.png" alt="appstore-download" />
+          <Link href={ANDROID_LINK}>
+            <img src="landing/playstore.png" alt="playstore-download" />
+          </Link>
+          <Link href={IOS_LINK}>
+            <img src="landing/appstore.png" alt="appstore-download" />
+          </Link>
         </div>
       </div>
       <p className="absolute bottom-[57px] left-1/2 -translate-x-1/2">
@@ -272,45 +282,45 @@ const Discorver = () => {
 };
 
 const Testimonials = () => {
-  const testiimonials = [
+  const testimonials = [
     {
       name: "Lauryn Hubbard",
       description:
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit.Recusandae, fuga pariatur quisquam qui, necessitatibus doloremque consequuntur harum maiores veritatis dolor placeat officiis eaque quos. Adipisci, accusamus. At, consequatur corrupti. Natus.",
+        "Applete completely changed how I organize my games. I can now book courts and invite my team in seconds. It’s everything a sports enthusiast needs!",
       image: "landing/testimonial-1.png",
     },
-
     {
       name: "Romeo West",
       image: "landing/testimonial-2.png",
       description:
-        "Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text",
+        "The ability to discover local sports events and instantly join communities has made staying active fun again. Applete is a must-have for athletes.",
     },
     {
       name: "Lennon Peck",
       image: "landing/testimonial-3.png",
       description:
-        "Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text",
+        "I love how easy it is to manage events and coordinate with teammates through Applete. It really simplifies my sports lifestyle.",
     },
     {
       name: "Mitchell Burnett",
       image: "landing/testimonial-4.png",
       description:
-        "Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text",
+        "From booking basketball courts to meeting new players, Applete gives me access to everything I need in one app. Super intuitive and reliable.",
     },
     {
       name: "Maia Fuller",
       image: "landing/testimonial-5.png",
       description:
-        "Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text",
+        "I’ve joined so many events and met amazing people through Applete. It’s more than just a booking tool—it’s a whole sports community.",
     },
     {
       name: "Grayson Robinson",
       image: "landing/testimonial-6.png",
       description:
-        "Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text",
+        "Whether I’m planning a tournament or casually joining weekend games, Applete keeps everything organized. I can’t imagine managing sports without it now.",
     },
   ];
+
   return (
     <section className="py-32">
       <h1 className="text-6xl font-normal capitalize">
@@ -318,14 +328,14 @@ const Testimonials = () => {
         Happy Users are saying about us!
       </h1>
       <article className="grid grid-cols-3 gap-3 mt-12">
-        {testiimonials.map((item, i) => (
+        {testimonials.map((item, i) => (
           <div
             className="rounded-xl bg-custom-backdrop py-6 px-8 flex flex-col h-[381px]"
             key={`${item.name}-${i}`}
           >
             <img
               src={item.image}
-              alt="testimonial-1-profile"
+              alt={`testimonial-${i + 1}-profile`}
               className="size-16"
             />
             <h3 className="mt-2 font-medium text-xl">{item.name}</h3>
@@ -333,15 +343,13 @@ const Testimonials = () => {
               {item.description}
             </p>
             <div className="flex justify-between items-center mt-auto">
-              <p className="text-sm text-custom-gray">
-                Lorem ipsum dolor sit amet.
-              </p>
+              <p className="text-sm text-custom-gray">Verified Applete user</p>
               <p className="font-medium">Applete</p>
             </div>
           </div>
         ))}
       </article>
-      <div className="flex float-right mt-6 gap-x-8 items-center">
+      {/* <div className="flex float-right mt-6 gap-x-8 items-center">
         <span className="flex items-center cursor-pointer">
           <ArrowLeft className="mr-2 size-4" />
           Previous
@@ -350,10 +358,11 @@ const Testimonials = () => {
           Next
           <ArrowRight className="ml-2 size-4" />
         </span>
-      </div>
+      </div> */}
     </section>
   );
 };
+
 
 const AppPreview = () => {
   return (
@@ -403,24 +412,24 @@ const Effortless = () => {
           stay connected with your team, all while enjoying a seamless
           experience at your fingertips!
         </p>
-        <Button
+        {/* <Button
           className="mt-10 rounded-full py-3 bg-white text-custom-background"
           variant={"secondary"}
           size={"lg"}
         >
-          Reginster Online
+          Register Online
         </Button>
-        <p className="mt-6">OR</p>
+        <p className="mt-6">OR</p> */}
         <p className="mt-6">Download it on</p>
         <div className="flex items-center gap-x-8 mt-6">
-          <div className="flex items-center font-semibold">
+          <Link className="flex items-center font-semibold" href={ANDROID_LINK} target="_blank">
             <BsGooglePlay className="mr-2 size-8" />
-            Goole Play
-          </div>
-          <div className="flex items-center font-semibold">
+            Google Play
+          </Link>
+          <Link className="flex items-center font-semibold" href={IOS_LINK} target="_blank" >
             <PiAppleLogoFill className="mr-2 size-8" />
             App Store
-          </div>
+          </Link>
         </div>
       </div>
     </section>
@@ -433,40 +442,80 @@ const Footer = () => {
       <h1 className="uppercase text-[15rem] stroked-text font-bold  absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-[1]">
         APPLETE
       </h1>
-      <div className="flex  w-full max-w-7xl mx-auto justify-between items-center gap-16">
-        <img src="applete-logo-row.png" alt="applete-logo-row" />
-        <div className="flex items-center gap-24">
+      <div className="flex  w-full max-w-7xl mx-auto justify-between gap-16">
+        <img src="applete-logo-row.png" alt="applete-logo-row" className="self-center" />
+        <div className="flex gap-24">
           <ul className="flex flex-col gap-2 text-xl">
-            <li>About App</li>
-            <li>Support</li>
-            <li>Reviews</li>
-            <li>Tutorial</li>
-            <li>Developer</li>
+            <li>
+              <Link href={"/about"}>
+              About App
+              </Link>
+              </li>
+            <li>
+              <Link href={"https://support.applete.app"}>
+              Support
+              </Link>
+              </li>
+            <li>
+              <Link href={"/reviews"}>
+              Reviews
+              </Link>
+              </li>
+            <li>
+              <Link href={"/tutorials"}>
+              Tutorial
+              </Link>
+              </li>
+            <li>
+              <Link href={"https://developer.applete.app"}>
+              Developer
+              </Link>
+              </li>
           </ul>
           <ul className="flex flex-col gap-2 text-xl">
+            <li>
+              <Link href={"https://www.facebook.com/appleteph"} className="flex flex-row gap-x-4 items-center">
+              <FaFacebook />
+              Facebook
+              </Link>
+            </li>
+            <li>
+              <Link href={"/"} className="flex flex-row gap-x-4 items-center">
+              <FaGlobe />
+                Web
+              </Link>
+            </li>
+            <li>
+              <Link 
+              href="mailto:appletephilippines@gmail.com"
+              className="flex flex-row gap-x-4 items-center">
+              <IoMdMail />
+                Email
+              </Link>
+            </li>
+            {/*
             <li>Lorem</li>
-            <li>Lorem</li>
-            <li>Lorem</li>
-            <li>Lorem</li>
-            <li>Lorem</li>
+            <li>Lorem</li> */}
           </ul>
-          <ul className="flex flex-col gap-2 text-xl">
+          {/* <ul className="flex flex-col gap-2 text-xl">
             <li>Lorem</li>
             <li>Lorem</li>
             <li>Lorem</li>
             <li>Lorem</li>
             <li>Lorem</li>
-          </ul>
+          </ul> */}
         </div>
         <div className="flex flex-col">
-          <h3 className="text-xl">Cookies Policy</h3>
+          {/* <h3 className="text-xl">Cookies Policy</h3>
           <div className="flex items-center gap-x-4 mt-2">
             <Button className="rounded-full">Accept</Button>
             <p className="text-custom-primary font-light text-sm">
               Find Out More
             </p>
-          </div>
-          <p className="mt-2">&copy; 2025</p>
+          </div> */}
+          <p className="mt-2">
+            © 2025 Applete. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

@@ -1,23 +1,25 @@
+import Link from "next/link";
 import { Button } from "./ui/button";
 import { GoDownload } from "react-icons/go";
+import DownloadAppButton from "./DownloadAppButton";
 
 const NavbarLanding = () => {
   const navItems = [
     {
       name: "About App",
-      link: "/about-app#",
+      link: "/about",
     },
     {
       name: "Support",
-      link: "/support#",
+      link: "https://support.applete.app",
     },
     {
       name: "Tutorial",
-      link: "/tutorial#",
+      link: "/tutorials",
     },
     {
       name: "Reviews",
-      link: "/reviews#",
+      link: "/reviews",
     },
   ];
   return (
@@ -26,18 +28,20 @@ const NavbarLanding = () => {
       <ul className="flex gap-8">
         {navItems.map((item, index) => (
           <li key={`navitem-${index}`}>
-            <Button
-              variant={"outline"}
-              className="rounded-full px-6 border-white/5"
-            >
-              {item.name}
-            </Button>
+            <Link href={item.link}>
+              <Button
+                variant={"outline"}
+                className="rounded-full px-6 border-white/5"
+                >
+                {item.name}
+              </Button>
+              </Link>
           </li>
         ))}
       </ul>
-      <Button className="rounded-full">
+      <DownloadAppButton>
         Download <GoDownload className="ml-2.5 size-4" />
-      </Button>
+      </DownloadAppButton>
     </nav>
   );
 };
