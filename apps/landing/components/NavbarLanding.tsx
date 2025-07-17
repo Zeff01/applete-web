@@ -24,7 +24,9 @@ const NavbarLanding = () => {
   ];
   return (
     <nav className="flex mt-8 justify-between items-center backdrop-blur-lg p-4 bg-white/10 rounded-full">
-      <img src="landing/landing-logo.webp" alt="logo" className="h-8" />
+      <Link href={"/"}>
+        <img src="landing/landing-logo.webp" alt="logo" className="h-8" />
+      </Link>
       <ul className="flex gap-8">
         {navItems.map((item, index) => (
           <li key={`navitem-${index}`}>
