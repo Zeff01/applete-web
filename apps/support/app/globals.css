@@ -4,8 +4,6 @@
 @source "../../../node_modules/@repo/ui";
 
 
-
-
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

@@ -9,7 +9,9 @@
     /* Custom imports */
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      /* To connect shadcn library */
+      "@shared/*": ["../../packages/ui/*"]
     }
   },
   "include": [

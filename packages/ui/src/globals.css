@@ -1,7 +1,5 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-/* add this line to tell tailwind to include the classes in this folder */
-@source "../../../node_modules/@repo/ui";
 
 
 
