@@ -1,5 +1,10 @@
 "use client"
 
+import { MainEvent } from "@/types/event"
+import { EventCancellationRequestQuery } from "@/types/event_cancel"
+import { Organization } from "@/types/org"
+import { OtherUser } from "@/types/user"
+import { ConvertTimestamps } from "@/types/utility"
 import { Button } from "@repo/ui/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@repo/ui/components/ui/card"
 import { Input } from "@repo/ui/components/ui/input"
@@ -8,7 +13,13 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@repo/ui/components/ui/textarea"
 import { Calendar, MapPin, Users, AlertTriangle } from "lucide-react"
 
-export default function EventCancellationForm() {
+export default function EventCancellationForm({eventId, data, eventData, orgData, userData}:{
+  eventId: string; 
+  data: EventCancellationRequestQuery; 
+  eventData: ConvertTimestamps<MainEvent>; 
+  orgData: ConvertTimestamps<Organization>; 
+  userData: ConvertTimestamps<OtherUser>
+}) {
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
       <div className="max-w-2xl mx-auto">
@@ -46,51 +57,42 @@ export default function EventCancellationForm() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="event-name">Event Name *</Label>
-                  <Input id="event-name" placeholder="Enter event name" required />
+                  <Input id="event-name" placeholder="Enter event name" required value={eventData.eventName} readOnly />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="event-id">Event ID</Label>
-                  <Input id="event-id" placeholder="e.g., EVT-2024-001" />
+                  <Input id="event-id" placeholder="e.g., EVT-2024-001" value={eventData.eventId} readOnly />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="event-date">Event Date *</Label>
-                  <Input id="event-date" type="date" required />
+                  <Input id="event-date" type="date" required readOnly value={new Date(eventData.date).toISOString().split('T')[0]} />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="event-time">Event Time</Label>
-                  <Input id="event-time" type="time" />
+                  <Input id="event-time" type="time" readOnly
+                  value={new Date(eventData.time?.timeFrom)
+                    .toTimeString()
+                    .slice(0, 5)} // "14:30"
+                  />
                 </div>
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="venue">Venue *</Label>
-                <Input id="venue" placeholder="Enter venue name and address" required />
+                <Input id="venue" placeholder="Enter venue name and address" required readOnly value={eventData.location?.formatted_address} />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="sport-type">Sport Type *</Label>
-                  <Select>
-                    <SelectTrigger id="sport-type">
-                      <SelectValue placeholder="Select sport" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="football">Football</SelectItem>
-                      <SelectItem value="basketball">Basketball</SelectItem>
-                      <SelectItem value="tennis">Tennis</SelectItem>
-                      <SelectItem value="volleyball">Volleyball</SelectItem>
-                      <SelectItem value="badminton">Badminton</SelectItem>
-                      <SelectItem value="cricket">Cricket</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
-                    </SelectContent>
-                  </Select>
+                <Input id="sport-type" placeholder="Sports" required readOnly value={"Basketball"} />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="participants">Expected Participants</Label>
-                  <Input id="participants" type="number" placeholder="Number of participants" />
+                  <Input id="participants" type="number" placeholder="Number of participants" readOnly value={100} />
                 </div>
               </div>
             </div>
@@ -105,22 +107,22 @@ export default function EventCancellationForm() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="organizer-name">Organizer Name *</Label>
-                  <Input id="organizer-name" placeholder="Your full name" required />
+                  <Input id="organizer-name" placeholder="Your full name" required readOnly value={userData.full_name} />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="organization">Organization</Label>
-                  <Input id="organization" placeholder="Organization/Club name" />
+                  <Input id="organization" placeholder="Organization/Club name" readOnly value={orgData?.org_name ?? ""} />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="email">Email Address *</Label>
-                  <Input id="email" type="email" placeholder="your.email@example.com" required />
+                  <Input id="email" type="email" placeholder="your.email@example.com" required readOnly value={orgData?.org_email} />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="phone">Phone Number *</Label>
-                  <Input id="phone" type="tel" placeholder="+1 (555) 123-4567" required />
+                  <Input id="phone" type="tel" placeholder="+1 (555) 123-4567" required readOnly value={orgData?.org_phone}  />
                 </div>
               </div>
             </div>

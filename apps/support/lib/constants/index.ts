@@ -1,0 +1,1 @@
+export const getEventCancellationDataUrl = process.env.NEXT_PUBLIC_GET_EVENT_CANCELLATION_DATA_URL
