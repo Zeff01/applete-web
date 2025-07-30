@@ -1,3 +1,4 @@
+import { CANCELLATION_REASON, URGENCY_LEVEL } from '@/lib/constants'
 import { Timestamp } from 'firebase/firestore'
 
 export enum EVENT_CANCELLATION_STATUS {
@@ -15,13 +16,19 @@ export enum EVENT_CANCELLATION_STATUS {
 }
 
 export interface EventCancellationRequest {
-  cancellation_reason: string
   status: EVENT_CANCELLATION_STATUS
   event_id: string
   user_id: string
   org_id: string
   created_at: Timestamp
   updated_at: Timestamp
+
+  // will be available after organizer completes request form
+  cancellation_reason?: CANCELLATION_REASON;
+  cancellation_details?: string;
+  urgency_level?: URGENCY_LEVEL;
+  /** optional */
+  additional_notes?: string;
 }
 
 
@@ -29,3 +36,13 @@ export interface EventCancellationRequestQuery extends Omit<EventCancellationReq
     created_at: number;
     updated_at: number
 }
+
+export type CancelEventPayload = Required<
+  Pick<
+    EventCancellationRequest,
+    | 'additional_notes'
+    | 'cancellation_details'
+    | 'cancellation_reason'
+    | 'urgency_level'
+  >
+>
