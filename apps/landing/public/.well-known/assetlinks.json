@@ -1,0 +1,14 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.applete.app",
+      "sha256_cert_fingerprints": [
+        "69:FB:7F:85:CF:FF:10:A8:0D:AE:6B:7F:0D:ED:66:BF:E4:75:BE:49:4E:8D:1B:A4:EC:94:47:66:70:7D:F1:3E",
+        "FA:C6:17:45:DC:09:03:78:6F:B9:ED:E6:2A:96:2B:39:9F:73:48:F0:BB:6F:89:9B:83:32:66:75:91:03:3B:9C",
+        "84:15:CB:45:92:0D:04:AF:F8:6A:BE:DF:55:8D:01:D0:1C:9B:4A:86:2F:75:3B:0A:83:5A:40:DF:DA:27:FA:52"
+      ]
+    }
+  }
+]
