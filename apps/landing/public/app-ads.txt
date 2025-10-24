@@ -1,0 +1,11 @@
+# app-ads.txt
+# Authorized Digital Sellers for ExampleApp
+# Following IAB Tech Lab app-ads.txt Specification v1.0.3
+# File hosted at: https://example.com/app-ads.txt
+
+# Format:
+# <ad system domain>, <publisher ID>, <relationship type>, <certification authority ID>
+
+google.com, pub-5711573505543328, DIRECT, f08c47fec0942fa0
+
+# End of authorized sellers list
